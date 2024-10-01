@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <!--HEADER-->
+    <header class="header">
+        <!--navbar-->
+        <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="../static/img/LOGO.png" alt="Logo" width="100%" height="100"
+                        class="d-inline-block align-text-top">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dna" style="color: #284288;">Cell type
+                                predictor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about" style="color: #284288;">FAQs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact" style="color: #284288;">Contact us</a>
+                        </li>
+                        <li class="nav-item">
+                            {% if session.user_id %}
+                            <a class="nav-link" href="/logout" style="color: #284288;">Log Out</a>
+                            {% else %}
+                            <a class="nav-link" href="/login" style="color: #284288;">Log In</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <div class="main">
+        <section class="vh-100">
+            <div class="container py-5 h-100">
+                <div class="row d-flex align-items-center justify-content-center h-100">
+                    <div class="col-md-8 col-lg-7 col-xl-6">
+                        <img src="../static/img/login.jpg" class="img-fluid" alt="Phone image">
+                    </div>
+                    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                        <div>
+                            <h1 style="color: #284288;">Sign Up For ScATAC-seq</h1>
+                        </div>
+                        <div>
+                            <h5 style="color: #882b28;">{{error}}</h5>
+                        </div>
+                        <form method="post">
+                            <!--<h4>Enter or paste a DNA sequence</h4>-->
+                            <br><br>
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <h2 style="color: #284288;">Root user email address</h2>
+                                <label class="form-label" for="form1Example13">Used for account recovery and some
+                                    administrative functions</label>
+                                <input type="email" name="email" id="form1Example13"
+                                    class="form-control form-control-lg" required />
+                            </div>
+                            <br>
+                            <!-- Username input -->
+                            <div class="form-outline mb-4">
+                                <h2 style="color: #284288;">Account Name</h2>
+                                <label class="form-label" for="form1Example23">Choose a name for your account.You
+                                    can change<br>
+                                    this name in your account settings after you sign up.
+                                </label>
+                                <input type="username" name="username" id="form1Example23"
+                                    class="form-control form-control-lg" required />
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <h2 style="color: #284288;">Password</h2>
+                                <label class="form-label" for="form1Example23">Choose a password for your account.
+                                </label>
+                                <input type="password" name="password" id="form1Example23"
+                                    class="form-control form-control-lg" required />
+                            </div>
+
+                            <br>
+                            <!-- Submit button -->
+                            <div class="d-flex justify-content-end pt-3">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block"
+                                    style="background-color:#284288; border-color: #284288; width: 550px;"> Sign Up
+                                </button>
+                            </div>
+
+                            <div class="divider d-flex align-items-center my-4">
+                                <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                            </div>
+
+
+                        </form>
+                        <form action="/login">
+                            <div class="d-flex justify-content-end pt-3">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block"
+                                    style="background-color:#284288; border-color: #284288; width: 550px;">Sign In
+                                    with Existing Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--footer-->
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+    <footer class="text-center text-white" style="background-color: 
+    #f8f9fa;">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4" id="contact">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" style="color: #284288;"
+                    data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" style="color: #284288;"
+                    data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" style="color: #284288;"
+                    data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" style="color: #284288;"
+                    data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" style="color: #284288;"
+                    data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg m-1" href="#!" role="button" style="color: #284288;"><i
+                        class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center  p-3" style="background-color: #cdd5e9; color: #284288;">
+            © 2023 Copyright:
+            <a href="#" style="color: #284288;">ChromoPred</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <!-- End of .footer -->
+
+    <script defer src="../static/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+</body>
+
+</html>
